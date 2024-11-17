@@ -1,4 +1,4 @@
-# LEGo-PyBullet
+# LEGO-PyBullet
 
 To create new conda environment with all necessary dependencies (preferred):
 ```
