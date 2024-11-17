@@ -1,0 +1,13 @@
+{
+    "configuration": "default",
+    "documentId": "bf016333eb87030ff171a82f",
+    "documentMicroversion": "aac8e7d848f03dcce4142e36",
+    "elementId": "10616d0ccc873b8cab8ee7de",
+    "fullConfiguration": "default",
+    "id": "MDNjaLQAOJxjX4CJw",
+    "isStandardContent": false,
+    "name": "Right_battery <1>",
+    "partId": "JFX",
+    "suppressed": false,
+    "type": "Part"
+}

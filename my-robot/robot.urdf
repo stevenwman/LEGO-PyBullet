@@ -1,0 +1,171 @@
+<robot name="onshape">
+  <link name="right_leg">
+    <visual>
+      <origin xyz="-0.02018858631425859973 0.10628376689883016482 -0.21481685812836601168"
+        rpy="0 -0 0" />
+      <geometry>
+        <mesh filename="package:///left_arm.stl" />
+      </geometry>
+      <material name="left_arm_material">
+        <color rgba="1 1 1 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.02018858631425859973 0.10628376689883016482 -0.21481685812836601168"
+        rpy="0 -0 0" />
+      <geometry>
+        <mesh filename="package:///left_arm.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.0042774302603985070448 0.0031453850566010577161 -0.16955063713276502524"
+        rpy="0 -0 0" />
+      <geometry>
+        <mesh filename="package:///right_foot.stl" />
+      </geometry>
+      <material name="right_foot_material">
+        <color rgba="1 1 1 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0042774302603985070448 0.0031453850566010577161 -0.16955063713276502524"
+        rpy="0 -0 0" />
+      <geometry>
+        <mesh filename="package:///right_foot.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.014277430260398488171 0.002645385056601057272 -0.16955063713276502524"
+        rpy="0 -0 1.570796326794896558" />
+      <geometry>
+        <mesh filename="package:///right_leg.stl" />
+      </geometry>
+      <material name="right_leg_material">
+        <color rgba="1 1 1 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.014277430260398488171 0.002645385056601057272 -0.16955063713276502524"
+        rpy="0 -0 1.570796326794896558" />
+      <geometry>
+        <mesh filename="package:///right_leg.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="-0.070004234690293931642 0.062893008522322740861 -0.090025506585724696107"
+        rpy="3.1415926535897926719 0.17453292519943047756 -1.570796326794896558" />
+      <geometry>
+        <mesh filename="package:///right_battery.stl" />
+      </geometry>
+      <material name="right_battery_material">
+        <color rgba="0.0078431372549019606755 0.23921568627450981448 0.82352941176470584317 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.070004234690293931642 0.062893008522322740861 -0.090025506585724696107"
+        rpy="3.1415926535897926719 0.17453292519943047756 -1.570796326794896558" />
+      <geometry>
+        <mesh filename="package:///right_battery.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.029251686360109559193 0.030419294575498006389 -0.10611825963484315671"
+        rpy="0 0 0" />
+      <mass value="0.39597688179033818656" />
+      <inertia ixx="0.001193705474080737107" ixy="4.4533288484329098882e-05"
+        ixz="0.00038867615933427615039" iyy="0.0020223835438832023573"
+        iyz="7.6511419319825511669e-05" izz="0.0011525854397805683233" />
+    </inertial>
+  </link>
+
+  <link name="left_leg">
+    <visual>
+      <origin xyz="0.09240938464973202926 0.19896127308580247028 -0.017433983425400877837"
+        rpy="1.5707963267948954478 1.570796326794896558 0" />
+      <geometry>
+        <mesh filename="package:///right_arm.stl" />
+      </geometry>
+      <material name="right_arm_material">
+        <color rgba="1 1 1 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.09240938464973202926 0.19896127308580247028 -0.017433983425400877837"
+        rpy="1.5707963267948954478 1.570796326794896558 0" />
+      <geometry>
+        <mesh filename="package:///right_arm.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="-0.007888489734585092672 0.084204181489644841507 -0.061381664950750002008"
+        rpy="-1.570796326794896336 -1.425095258045005072e-29 -0.17453292519943391925" />
+      <geometry>
+        <mesh filename="package:///right_battery.stl" />
+      </geometry>
+      <material name="right_battery_material">
+        <color rgba="0.0078431372549019606755 0.23921568627450981448 0.82352941176470584317 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.007888489734585092672 0.084204181489644841507 -0.061381664950750002008"
+        rpy="-1.570796326794896336 -1.425095258045005072e-29 -0.17453292519943391925" />
+      <geometry>
+        <mesh filename="package:///right_battery.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="-0.010791100711216056185 0.15334284553357224734 0.0069999999999999541755"
+        rpy="1.570796326794896558 1.570796326794896558 0" />
+      <geometry>
+        <mesh filename="package:///left_foot.stl" />
+      </geometry>
+      <material name="left_foot_material">
+        <color rgba="0.79607843137254896693 0.82352941176470584317 0.9372549019607843146 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.010791100711216056185 0.15334284553357224734 0.0069999999999999541755"
+        rpy="1.570796326794896558 1.570796326794896558 0" />
+      <geometry>
+        <mesh filename="package:///left_foot.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="-0.011291100711216292551 0.1533428455335720253 0.022999999999999999611"
+        rpy="1.570796326794896558 -2.8349296144150689156e-33 5.149578512413285276e-17" />
+      <geometry>
+        <mesh filename="package:///left_leg.stl" />
+      </geometry>
+      <material name="left_leg_material">
+        <color rgba="1 1 1 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.011291100711216292551 0.1533428455335720253 0.022999999999999999611"
+        rpy="1.570796326794896558 -2.8349296144150689156e-33 5.149578512413285276e-17" />
+      <geometry>
+        <mesh filename="package:///left_leg.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.015830994313755862579 0.086582938575949133786 -0.019316826607899198476"
+        rpy="0 0 0" />
+      <mass value="0.41395129653808809822" />
+      <inertia ixx="0.0021694157004608066036" ixy="-0.00010184426068828719637"
+        ixz="5.054456639801233617e-05" iyy="0.0011859207889260219796"
+        iyz="-0.00035136756416847739594" izz="0.0013250893011849933928" />
+    </inertial>
+  </link>
+
+  <joint name="hip" type="revolute">
+    <origin xyz="-0.020822569739601552719 0.01393648576781737064 -0.016207791599192972187"
+      rpy="-1.570796326794896558 0.39827133476487169839 1.57079632679489678" />
+    <parent link="right_leg" />
+    <child link="left_leg" />
+    <axis xyz="0 0 1" />
+    <limit effort="1" velocity="20" />
+    <joint_properties friction="0.0" />
+  </joint>
+
+
+</robot>
