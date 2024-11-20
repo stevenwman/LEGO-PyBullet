@@ -7,10 +7,17 @@ physicsClient = p.connect(p.GUI)  # or p.DIRECT for non-graphical version
 p.setAdditionalSearchPath(pybullet_data.getDataPath())  # optionally
 p.setGravity(0, 0, -10)
 udf_path = "/home/sman/Work/CMU/Research/LEGO-pybullet/my-robot/robot.urdf"
+udf_path = "/home/sman/Work/CMU/Research/LEGO-pybullet/my-robot-fixed/robot.urdf"
 planeId = p.loadURDF("plane.urdf")
-startPos = [0, 0, 0.20]
+startPos = [0, 0, 0.17]
 startOrientation = p.getQuaternionFromEuler([0, 0, 0])
 robotId = p.loadURDF(udf_path, startPos, startOrientation)
+
+for i in range(p.getNumJoints(robotId)):
+    if p.getJointInfo(robotId, i)[1] == b'hip':
+        hipJointId = i
+        print(f"hip joint id: {hipJointId}\n")
+
 mode = p.POSITION_CONTROL
 
 timestep = 1./240.
@@ -18,7 +25,7 @@ A = 42 * np.pi / 180
 omega = 1.7 * 2 * np.pi
 act_offset = 0
 waitTime = 3
-runTime = 10
+runTime = 25
 
 traj = []
 
@@ -35,10 +42,10 @@ for i in range(round(runTime/timestep)):
     if currTime > waitTime:
         act_pos = A*np.cos(omega*(currTime - waitTime)) + act_offset
         p.setJointMotorControl2(
-            robotId, 0, controlMode=mode, targetPosition=act_pos)
+            robotId, hipJointId, controlMode=mode, targetPosition=act_pos)
     else:
         p.setJointMotorControl2(
-            robotId, 0, controlMode=mode, targetPosition=act_offset)
+            robotId, hipJointId, controlMode=mode, targetPosition=act_offset)
     time.sleep(timestep)
 
 p.disconnect()

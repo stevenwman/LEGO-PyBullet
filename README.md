@@ -1,11 +1,15 @@
 # LEGO-PyBullet
 
-To create new conda environment with all necessary dependencies (preferred):
+All relevant libraries are listed in the `requirements.txt`
+
+To replicate the environment used to run:
+
+Create a new conda environment with all necessary dependencies (preferred):
 ```
 conda env create -f environment.yml
 ```
 
-To add dependencies to existing conda environment:
+Or, add dependencies to existing conda environment:
 ```
 conda env update --file environment.yml --prune
 ```
