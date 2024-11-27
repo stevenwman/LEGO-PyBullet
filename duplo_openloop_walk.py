@@ -6,11 +6,11 @@ import numpy as np
 physicsClient = p.connect(p.GUI)  # or p.DIRECT for non-graphical version
 p.setAdditionalSearchPath(pybullet_data.getDataPath())  # optionally
 p.setGravity(0, 0, -10)
-udf_path = "/home/sman/Work/CMU/Research/LEGO-pybullet/duplo/duplo.urdf"
+urdf_path = "/home/sman/Work/CMU/Research/LEGO-pybullet/duplo_new/robot.urdf"
 planeId = p.loadURDF("plane.urdf")
 startPos = [0, 0, 1.2]
-startOrientation = p.getQuaternionFromEuler([3.14/2, 0, 0])
-robotId = p.loadURDF(udf_path, startPos, startOrientation)
+startOrientation = p.getQuaternionFromEuler([0, 0, 0])
+robotId = p.loadURDF(urdf_path, startPos, startOrientation)
 
 for i in range(p.getNumJoints(robotId)):
     if p.getJointInfo(robotId, i)[1] == b'hip':
@@ -20,11 +20,11 @@ for i in range(p.getNumJoints(robotId)):
 mode = p.POSITION_CONTROL
 
 timestep = 1./240.
-A = 40 * np.pi / 180
-omega = 1.7 * 2 * np.pi
-omega = np.sqrt(9.81/1)
+A = 30 * np.pi / 180
+omega = np.sqrt(9.81/1.15) * 1
+print(f"frequency: {omega/(2*np.pi)}")
 act_offset = 0
-waitTime = 3
+waitTime = 5
 runTime = 25
 
 traj = []
@@ -42,7 +42,7 @@ for i in range(round(runTime/timestep)):
 
     # wait a bit before starting the actuation
     if currTime > waitTime:
-        act_pos = A*np.cos(omega*(currTime - waitTime))
+        act_pos = A*np.sin(omega*(currTime - waitTime))
         p.setJointMotorControl2(
             robotId, hipJointId, controlMode=mode, targetPosition=act_pos)
     else:
