@@ -6,8 +6,8 @@ import numpy as np
 physicsClient = p.connect(p.GUI)  # or p.DIRECT for non-graphical version
 p.setAdditionalSearchPath(pybullet_data.getDataPath())  # optionally
 p.setGravity(0, 0, -10)
-urdf_path = "/home/sman/Work/CMU/Research/LEGO-pybullet/my-robot/robot.urdf"
-# urdf_path = "/home/sman/Work/CMU/Research/LEGO-pybullet/my-robot-fixed/robot.urdf"
+urdf_path = "/my-robot/robot.urdf"
+# urdf_path = "/my-robot-fixed/robot.urdf"
 planeId = p.loadURDF("plane.urdf")
 startPos = [0, 0, 0.17]
 startOrientation = p.getQuaternionFromEuler([0, 0, 0])

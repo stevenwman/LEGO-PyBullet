@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 j_desired_file_path = "traj_data/duplo_joint_des.csv"
 j_actual_file_path = "traj_data/duplo_joint.csv"
 
-j_desired_file_path = "traj_data/mugatu_joint_des.csv"
-j_actual_file_path = "traj_data/mugatu_joint.csv"
+# j_desired_file_path = "traj_data/mugatu_joint_des.csv"
+# j_actual_file_path = "traj_data/mugatu_joint.csv"
 
 j_desired = np.loadtxt(j_desired_file_path, delimiter=",")
 j_actual = np.loadtxt(j_actual_file_path, delimiter=",")
