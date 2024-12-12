@@ -7,6 +7,7 @@ physicsClient = p.connect(p.GUI)  # or p.DIRECT for non-graphical version
 p.setAdditionalSearchPath(pybullet_data.getDataPath())  # optionally
 p.setGravity(0, 0, -10)
 urdf_path = "/duplo_new/robot.urdf"
+urdf_path = "/duplo_smallfeet/robot.urdf"
 planeId = p.loadURDF("plane.urdf")
 startPos = [0, 0, 1.2]
 startOrientation = p.getQuaternionFromEuler([0, 0, 0])
@@ -20,8 +21,8 @@ for i in range(p.getNumJoints(robotId)):
 mode = p.POSITION_CONTROL
 
 timestep = 1./240.
-Amp = 30 * np.pi / 180
-omega = np.sqrt(9.81/1.15) * 1
+Amp = 25 * np.pi / 180
+omega = np.sqrt(9.81/0.63)
 print(f"frequency: {omega/(2*np.pi)}")
 act_offset = 0
 waitTime = 5
@@ -38,8 +39,13 @@ for i in range(round(runTime/timestep)):
     state_vec = p.getLinkState(robotId, 0, computeLinkVelocity=1)
     com_x, com_y, com_z = state_vec[0]
 
-    act_pos = Amp*np.sin(omega*(currTime - waitTime)
-                         ) if currTime > waitTime else init_pos
+    b = 7
+    wave = np.sin(omega*(currTime - waitTime))
+    wave_val = np.sqrt((1+b**2)/(1+(b**2)*wave**2))*wave
+    act_pos = Amp * wave_val if currTime > waitTime else init_pos
+
+    # act_pos = Amp*np.sin(omega*(currTime - waitTime)
+    #                      ) if currTime > waitTime else init_pos
     joint_pos = p.getJointState(robotId, hipJointId)[0]
 
     joint_real.append((currTime, joint_pos))
@@ -60,7 +66,7 @@ for i in range(round(runTime/timestep)):
         np.savetxt("./traj_data/duplo_joint_des.csv", joint_des, delimiter=",")
         np.savetxt("./traj_data/duplo_traj.csv", traj, delimiter=",")
 
-    time.sleep(timestep)
+    time.sleep(3*timestep)
 
 p.disconnect()
 

@@ -68,5 +68,9 @@ for i in range(round(runTime/timestep)):
 
 p.disconnect()
 
+print(f"Starting position: {traj[0]}")
+print(f"Ending position: {traj[-1]}")
+print(f"Total time: {runTime} seconds")
+
 # dave trajectory as file
 np.savetxt("./traj_data/mugatu_traj.csv", traj, delimiter=",")

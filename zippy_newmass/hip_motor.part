@@ -1,0 +1,13 @@
+{
+    "configuration": "default",
+    "documentId": "d4162f5f6a620a91d67bd0f0",
+    "documentMicroversion": "91ce76344fa443d6c1fa1474",
+    "elementId": "bf0e83771dbab978e81c20cb",
+    "fullConfiguration": "default",
+    "id": "MHajZjIsekIaxQ93n",
+    "isStandardContent": false,
+    "name": "hip_motor <1>",
+    "partId": "JFL",
+    "suppressed": false,
+    "type": "Part"
+}

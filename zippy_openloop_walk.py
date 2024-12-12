@@ -3,7 +3,8 @@ import time
 import pybullet_data
 import numpy as np
 
-physicsClient = p.connect(p.GUI)  # or p.DIRECT for non-graphical version
+# physicsClient = p.connect(p.GUI)  # or p.DIRECT for non-graphical version
+physicsClient = p.connect(p.DIRECT)  # or p.DIRECT for non-graphical version
 
 p.resetDebugVisualizerCamera(cameraDistance=1.6,
                              cameraYaw=50,
@@ -15,6 +16,7 @@ p.resetDebugVisualizerCamera(cameraDistance=1.6,
 p.setAdditionalSearchPath(pybullet_data.getDataPath())  # optionally
 p.setGravity(0, 0, -10)
 urdf_path = "zippy/robot.urdf"
+urdf_path = "zippy_newmass/robot.urdf"
 planeId = p.loadURDF("plane.urdf")
 startPos = [0, 0, 0.1]
 startOrientation = p.getQuaternionFromEuler([0, 0, 0])
@@ -26,12 +28,18 @@ for i in range(p.getNumJoints(robotId)):
         print(f"hip joint id: {hipJointId}\n")
 
 mode = p.POSITION_CONTROL
+# mode = p.VELOCITY_CONTROL
 
 timestep = 1./240.
-pos_amp = 22 * np.pi / 180
-vel_amp = 5.81
+timestep = 1./3000.
+p.setTimeStep(timestep)
+pos_amp = 21 * np.pi / 180
+# vel_amp = 5.81
 omega = 8.3 * 2 * np.pi
-print(f"frequency: {omega/(2*np.pi)}")
+omega = 28.7 * 2
+hz = omega/(2*np.pi)
+vel_amp = pos_amp * omega
+print(f"frequency: {hz}")
 act_offset = 0
 waitTime = 3
 runTime = 25
@@ -41,6 +49,8 @@ traj = []
 joint_des = []
 joint_real = []
 init_pos = 0
+act_perc_offset = 0.5 / 100 * 0
+# act_vel_perc = 10/100
 
 
 for i in range(round(runTime/timestep)):
@@ -50,10 +60,10 @@ for i in range(round(runTime/timestep)):
 
     # generate a square wave for the hip joint
     if currTime > waitTime:
-        act_pos = pos_amp if np.sin(
-            omega*(currTime - waitTime)) > 0 else -pos_amp
-        act_vel = vel_amp if np.sin(
-            omega*(currTime - waitTime)) > 0 else -vel_amp
+        wave_val = np.sin(omega*(currTime - waitTime))
+        act_pos = (pos_amp if wave_val > 0 else -pos_amp)
+        act_vel = (vel_amp if wave_val > 0 else -vel_amp)
+
     else:
         act_pos = init_pos
         act_vel = 0
@@ -62,7 +72,10 @@ for i in range(round(runTime/timestep)):
 
     joint_real.append((currTime, joint_pos))
     joint_des.append((currTime, act_pos))
-    traj.append((currTime, com_x, com_y, com_z))
+
+    # only append every 0.01 seconds
+    if currTime % 0.01 < timestep:
+        traj.append((currTime, com_x, com_y, com_z))
     # wait a bit before starting the actuation
 
     p.stepSimulation()
@@ -71,7 +84,8 @@ for i in range(round(runTime/timestep)):
                             hipJointId,
                             controlMode=mode,
                             targetPosition=act_pos,
-                            targetVelocity=act_vel)
+                            targetVelocity=act_vel,
+                            force=0.02)
 
     # print(p.getDebugVisualizerCamera())
 
@@ -81,7 +95,8 @@ for i in range(round(runTime/timestep)):
         np.savetxt("./traj_data/zippy_joint_des.csv", joint_des, delimiter=",")
         np.savetxt("./traj_data/zippy_traj.csv", traj, delimiter=",")
 
-    time.sleep(1*timestep)
+    # time.sleep(4*timestep)
+    print(currTime)
 
 p.disconnect()
 

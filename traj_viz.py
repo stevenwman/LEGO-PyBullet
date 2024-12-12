@@ -5,6 +5,7 @@ from matplotlib import cm
 
 # read from file and store in a numpy array
 file_path = "traj_data/mugatu_traj.csv"
+file_path = "traj_data/zippy_traj.csv"
 trajectory = np.loadtxt(file_path, delimiter=",")
 
 # trajectory = np.array(traj)

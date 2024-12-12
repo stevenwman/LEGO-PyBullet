@@ -1,0 +1,184 @@
+<robot name="onshape">
+  <link name="leg">
+    <visual>
+      <origin xyz="0.84000000000000007994 -0.062500000000000832667 -0.57250000000000800249"
+        rpy="-3.779414898120830668e-30 1.804112415016155233e-16 -3.141592653589793116" />
+      <geometry>
+        <mesh filename="package:///battery.stl" />
+      </geometry>
+      <material name="battery_material">
+        <color rgba="0.79607843137254896693 0.82352941176470584317 0.9372549019607843146 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.84000000000000007994 -0.062500000000000832667 -0.57250000000000800249"
+        rpy="-3.779414898120830668e-30 1.804112415016155233e-16 -3.141592653589793116" />
+      <geometry>
+        <mesh filename="package:///battery.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.02663730175413236978 -0.078997483657325728856 -0.89981096590152498393"
+        rpy="3.141592653589793116 -0 3.141592653589793116" />
+      <geometry>
+        <mesh filename="package:///short_right_foot.stl" scale="0.75 0.75 0.75 " />
+      </geometry>
+      <material name="short_right_foot_material">
+        <color rgba="0.79607843137254896693 0.82352941176470584317 0.9372549019607843146 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.02663730175413236978 -0.078997483657325728856 -0.89981096590152498393"
+        rpy="3.141592653589793116 -0 3.141592653589793116" />
+      <geometry>
+        <mesh filename="package:///short_right_foot.stl" scale="0.75 0.75 0.75 " />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0 -0.066500000000000003553 -1" rpy="0 -0 3.141592653589793116" />
+      <geometry>
+        <mesh filename="package:///leg.stl" />
+      </geometry>
+      <material name="leg_material">
+        <color rgba="0.79607843137254896693 0.82352941176470584317 0.9372549019607843146 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.066500000000000003553 -1" rpy="0 -0 3.141592653589793116" />
+      <geometry>
+        <mesh filename="package:///leg.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.80500000000000004885 -0.025000000000000188738 -0.49750000000000682565"
+        rpy="0 1.8041124150159055092e-16 -3.141592653589793116" />
+      <geometry>
+        <mesh filename="package:///arm.stl" />
+      </geometry>
+      <material name="arm_material">
+        <color rgba="0.79607843137254896693 0.82352941176470584317 0.9372549019607843146 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.80500000000000004885 -0.025000000000000188738 -0.49750000000000682565"
+        rpy="0 1.8041124150159055092e-16 -3.141592653589793116" />
+      <geometry>
+        <mesh filename="package:///arm.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.40472519756556968318 -0.044495224292667313881 -0.66631549152510127776"
+        rpy="0 0 0" />
+      <mass value="181" />
+      <inertia ixx="19.093667574752736016" ixy="-2.3573407776988219986" ixz="-14.674578683865565409"
+        iyy="46.641431523123550562" iyz="-1.2874368940004372597" izz="30.57877353631985784" />
+    </inertial>
+  </link>
+
+  <link name="leg_2">
+    <visual>
+      <origin xyz="-4.8572257327350598644e-17 0 0.80500000000000004885"
+        rpy="-1.570796326794896558 1.570796326794896558 0" />
+      <geometry>
+        <mesh filename="package:///hip.stl" />
+      </geometry>
+      <material name="hip_material">
+        <color rgba="0.79607843137254896693 0.82352941176470584317 0.9372549019607843146 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-4.8572257327350598644e-17 0 0.80500000000000004885"
+        rpy="-1.570796326794896558 1.570796326794896558 0" />
+      <geometry>
+        <mesh filename="package:///hip.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="-0.012499999999999972938 -0.48499999999999932054 0.80500000000000015987"
+        rpy="-1.57079632679489678 1.570796326794896336 0" />
+      <geometry>
+        <mesh filename="package:///arm.stl" />
+      </geometry>
+      <material name="arm_material">
+        <color rgba="0.79607843137254896693 0.82352941176470584317 0.9372549019607843146 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.012499999999999972938 -0.48499999999999932054 0.80500000000000015987"
+        rpy="-1.57079632679489678 1.570796326794896336 0" />
+      <geometry>
+        <mesh filename="package:///arm.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.066502516342674206085 -0.88731096590152602754 0.026637301754132314269"
+        rpy="1.570796326794896558 1.570796326794896558 0" />
+      <geometry>
+        <mesh filename="package:///short_left_foot.stl" scale="0.75 0.75 0.75 " />
+      </geometry>
+      <material name="short_left_foot_material">
+        <color rgba="0.79607843137254896693 0.82352941176470584317 0.9372549019607843146 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.066502516342674206085 -0.88731096590152602754 0.026637301754132314269"
+        rpy="1.570796326794896558 1.570796326794896558 0" />
+      <geometry>
+        <mesh filename="package:///short_left_foot.stl" scale="0.75 0.75 0.75 " />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.050000000000000210942 -0.5599999999999996092 0.74000000000000021316"
+        rpy="-1.57079632679489678 -1.5707963267948961139 0" />
+      <geometry>
+        <mesh filename="package:///battery.stl" />
+      </geometry>
+      <material name="battery_material">
+        <color rgba="0.79607843137254896693 0.82352941176470584317 0.9372549019607843146 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.050000000000000210942 -0.5599999999999996092 0.74000000000000021316"
+        rpy="-1.57079632679489678 -1.5707963267948961139 0" />
+      <geometry>
+        <mesh filename="package:///battery.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.054000000000000006328 -0.98750000000000004441 -0.025000000000000022204"
+        rpy="-1.570796326794896558 -1.570796326794896558 0" />
+      <geometry>
+        <mesh filename="package:///leg.stl" />
+      </geometry>
+      <material name="leg_material">
+        <color rgba="0.79607843137254896693 0.82352941176470584317 0.9372549019607843146 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.054000000000000006328 -0.98750000000000004441 -0.025000000000000022204"
+        rpy="-1.570796326794896558 -1.570796326794896558 0" />
+      <geometry>
+        <mesh filename="package:///leg.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.028813252280203583561 -0.58875922371165545499 0.38932965551924442194"
+        rpy="0 0 0" />
+      <mass value="201" />
+      <inertia ixx="56.825166967482367397" ixy="1.6643185561926532312" ixz="2.2683091017479890539"
+        iyy="33.082172372103215707" iyz="-12.852660939719090294" izz="26.811489515816621321" />
+    </inertial>
+  </link>
+
+  <joint name="hip" type="revolute">
+    <origin xyz="0.5 -0.012500000000000059674 -0.012499999999999955591"
+      rpy="1.570796326794896558 -1.1119872575755448813e-43 -1.570796326794896558" />
+    <parent link="leg" />
+    <child link="leg_2" />
+    <axis xyz="0 0 1" />
+    <limit effort="1" velocity="20" lower="-0.785398163397448279" upper="0.785398163397448279" />
+    <joint_properties friction="0.0" />
+  </joint>
+
+
+</robot>
